@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+      <style>
+        .hide {display: none}
+      </style>
+<head>
+<meta charset="utf-8"/>
+<title>Feedback Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>FeedBacks List</h1>
+    <a href="/form">Submit Feedback</a>
+    <br/><br/>
+    <p th:text = "${message}">sample</p>
+    <table border="1" cellpadding="0">
+        <thead>
+            <tr>
+                <th class="hide" >Feedback ID</th>
+                <th>Type</th>
+                <th>Feedback</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="feedback : ${FeedBackList}">
+                <td class="hide" th:text="${feedback.id}">Product ID</td>
+                <td th:text="${feedback.fbType}">Type</td>
+                <td th:text="${feedback.description}">Content</td>
+                <td th:text="${feedback.fName+' '+feedback.lName}">Name</td>
+                <td th:text="${feedback.email}">email</td>
+                <td>
+                    <a th:href="@{'/remove/' + ${feedback.id}}">remove</a>
+                    &nbsp;&nbsp;&nbsp;
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+</body>
+</html>
